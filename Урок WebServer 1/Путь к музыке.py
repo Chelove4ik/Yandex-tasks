@@ -136,7 +136,7 @@ def text_in_alert(text):
 @app.route('/yandex_music/')
 def yandex_music():
     return ''' <h2>Положение</h2>
-    <iframe src=https://s174iva.storage.yandex.net/get-mp3/725ea11f0fc04c00ffeff1d4fc481fa9/000584465fcc1702/rmusic/U2FsdGVkX1-OzbzB-y2__g-NAkBWO-WAbXhd-DXu7khQUp5fFlcMtDBu3FrPLPHg7dzv6_vUnacRa9MWy_NPlpybOB7sp8KXe0oq8IpCJ5Y/d45c9afa0e9c098696ab89850b68c9c3235da36fd81db5d7c0812a7ff5ab3466?track-id=48592141&play=true></iframe>'''
+    <iframe frameborder="0" style="border:none;width:600px;height:100px;" width="600" height="100" src="https://music.yandex.ru/iframe/#track/48592141/4924440/black/">Слушайте <a href='https://music.yandex.ru/album/4924440/track/48592141'>Положение</a> — <a href='https://music.yandex.ru/artist/3246342'>Скриптонит</a> на Яндекс.Музыке</iframe>'''
 
 
 if __name__ == '__main__':
