@@ -1,1 +1,1 @@
-**https://github.com/Chelove4ik/Yandex-tasks**
+https://github.com/Chelove4ik/Yandex-tasks
