@@ -65,7 +65,7 @@ def form_sample():
                                     <label class="form-check-label" for="acceptRules">Даю согласие на обработку персональных данных</label>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary">Записаться</button>
+                                <button type="submit" class="btn btn-primary">Отправить</button>
                             </form>
                           </body>
                         </html>'''
