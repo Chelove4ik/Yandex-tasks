@@ -1,10 +1,9 @@
-from flask import Flask, request
-from werkzeug.utils import secure_filename
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
 
-@app.route('/sample_file_upload', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def sample_file_upload():
     if request.method == 'GET':
         return '''<!doctype html>
@@ -17,23 +16,28 @@ def sample_file_upload():
                             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
                             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
                             crossorigin="anonymous">
-                            <title>Пример загрузки файла</title>
+                            <title>Имя</title>
                           </head>
                           <body>
                             <h1>Загрузим файл</h1>
                             <form method="post" enctype="multipart/form-data">
                                <div class="form-group">
-                                    <label for="photo">Выберите файл</label>
-                                    <input type="file" class="form-control-file" id="photo" name="file">
+                                    <label for="about">Введите число</label>
+                                    <textarea class="form-control" id="about" rows="1" name="chislo"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Отправить</button>
                             </form>
                           </body>
                         </html>'''
     elif request.method == 'POST':
-        f = request.files['file']
-        f.save(secure_filename(f.filename))
-        return "Форма отправлена"
+        num = request.form.get('chislo')
+        try:
+            if int(num) == float(num):
+                return render_template('odd_even.html', number=int(num))
+            else:
+                return f'{num} не является корректным целым числом'
+        except Exception:
+            return f'{num} не является корректным целым числом'
 
 
 if __name__ == '__main__':
