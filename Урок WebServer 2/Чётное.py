@@ -3,7 +3,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/odd_even', methods=['POST', 'GET'])
 def sample_file_upload():
     if request.method == 'GET':
         return '''<!doctype html>
