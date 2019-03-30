@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.firstname.label }}<br>
+        {{ form.firstname }}<br>
+        {% for error in form.firstname.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.secondname.label }}<br>
+        {{ form.secondname }}<br>
+        {% for error in form.secondname.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.question_1.label }}<br>
+        {{ form.question_1 }}<br>
+        {% for error in form.question_1.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.question_2.label }}<br>
+        {{ form.question_2}}<br>
+        {% for error in form.question_2.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.question_3.label }}<br>
+        {{ form.question_3}}<br>
+        {% for error in form.question_3.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.question_4.label }}<br>
+        {{ form.question_4}}<br>
+        {% for error in form.question_4.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
