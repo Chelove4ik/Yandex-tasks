@@ -99,6 +99,3 @@ class NewsModel:
         cursor.execute('''DELETE FROM news WHERE id = ?''', (str(news_id),))
         cursor.close()
         self.connection.commit()
-
-a = DB()
-print(a.get_connection())
