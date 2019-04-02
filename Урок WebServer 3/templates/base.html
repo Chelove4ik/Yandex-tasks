@@ -11,10 +11,10 @@
 <header>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">Мой сайт</a>
+        {% if "username" in session %}
+        <a class="navbar-brand" href="/logout">{{session['username']}}</a>
+        {% endif %}
     </nav>
-    {% if "username" in session %}
-    <a class="navbar-brand" href="/logout">{{session['username']}}</a>
-    {% endif %}
 
 </header>
 <!-- Begin page content -->
