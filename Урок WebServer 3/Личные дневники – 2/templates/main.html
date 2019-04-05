@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ form.hidden_tag() }}
+<a href="/add_news">Добавить новость</a>
+<h6>Сортировка</h6>
+<form action="" method="post" novalidate>
+    {{form.sortd()}}
+    <p><input type="submit" value="Выбрать"></p>
+</form>
+{% for item in news %}
+<div class="alert alert-dark" role="alert">
+    <h2>{{item[1]}}</h2>
+    <div>{{item[2]}}</div>
+    <a href="/delete_news/{{item[0]}}">Удалить новость</a>
+</div>
+{% endfor %}
+
+{% endblock %}

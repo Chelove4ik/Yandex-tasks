@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/">На главную</a>
+{% for user in users %}
+<div class="alert alert-dark" role="alert">
+    <h2>{{user[1]}}</h2>
+    <div>{{news.get_len_all([user[0]])}}</div>
+</div>
+{% endfor %}
+
+{% endblock %}

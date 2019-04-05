@@ -94,6 +94,9 @@ class NewsModel:
         rows = cursor.fetchall()
         return rows
 
+    def get_len_all(self, user_id):
+        return len(self.get_all(user_id[0]))
+
     def delete(self, news_id):
         cursor = self.connection.cursor()
         cursor.execute('''DELETE FROM news WHERE id = ?''', (str(news_id),))
