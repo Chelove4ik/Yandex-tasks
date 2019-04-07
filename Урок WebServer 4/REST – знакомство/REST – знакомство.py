@@ -1,13 +1,7 @@
-import json
-
-from flask import render_template, Flask, jsonify
-from flask_wtf import FlaskForm
-from werkzeug.utils import redirect
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
-from news_table import DB, UsersModel, NewsModel
+from flask import Flask, jsonify
 from flask import make_response
 from flask import request
+from news_table import DB, NewsModel
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
