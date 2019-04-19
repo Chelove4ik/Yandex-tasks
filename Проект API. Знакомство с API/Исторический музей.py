@@ -1,12 +1,22 @@
 import requests
 
-response = requests.get(
-    "http://geocode-maps.yandex.ru/1.x/?geocode=Исторический музей, Москва, Красная площадь, 1)&format=json").json()[
-    'response']['GeoObjectCollection']['featureMember']
+zapros = 'Исторический музей, город Москва, Красная пл-дь, 1'
 
-for i in response:
-    i = i['GeoObject']
-    if 'Москва' in i['description'] and \
-            'Красная площадь, 1' in i['metaDataProperty']['GeocoderMetaData']['Address']['formatted']:
-        print('адрес:', i['metaDataProperty']['GeocoderMetaData']['Address']['formatted'])
-        print('координаты:', i['Point']['pos'])
+geocoder_request = f"http://geocode-maps.yandex.ru/1.x/?geocode={zapros}&format=json"
+
+response = None
+
+try:
+    response = requests.get(geocoder_request)
+    if response:
+        json_response = response.json()
+        toponym = json_response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
+        toponym_address = toponym["metaDataProperty"]["GeocoderMetaData"]["text"]
+        toponym_coodrinates = toponym["Point"]["pos"]
+        print(toponym_address, "имеет координаты:", toponym_coodrinates)
+    else:
+        print("Ошибка выполнения запроса:")
+        print(geocoder_request)
+        print("Http статус:", response.status_code, "(", response.reason, ")")
+except:
+    print("Запрос не удалось выполнить. Проверьте подключение к сети Интернет.")
