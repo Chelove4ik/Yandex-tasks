@@ -200,7 +200,6 @@ def get_first_name(req):
 
 def answ_country(res, req):
     user_id = req['session']['user_id']
-    attempt = sessionStorage[user_id]['attempt']
     city = sessionStorage[user_id]['city']
     country = countrys[city]
     if get_geo(req, 'country') == country:
