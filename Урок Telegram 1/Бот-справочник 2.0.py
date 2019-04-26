@@ -38,9 +38,9 @@ def handle_time(message):
     bot.reply_to(message, 'Welcome', reply_markup=markup)
 
 
-@bot.message_handler(content_types=['text'])
-def get_text_messages(message):
-    bot.send_message(message.from_user.id, 'Я получил сообщение ' + message.text)
+@bot.message_handler(func=lambda m: True)
+def echo_all(message):
+    bot.send_message(message.from_user.id, message.text[::-1])
 
 
-bot.polling(none_stop=True, interval=0)
+bot.polling()
