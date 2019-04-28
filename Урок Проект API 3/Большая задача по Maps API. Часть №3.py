@@ -18,7 +18,7 @@ class Example(QWidget):
         self.setLayout(self.hbox)
         self.lbl = QLabel(self)
         self.scale = 11
-        self.coords = ['131', '43']
+        self.coords = [131, 43]
 
         self.show_img()
 
@@ -26,7 +26,7 @@ class Example(QWidget):
 
     def show_img(self):
         response = requests.get(
-            f'https://static-maps.yandex.ru/1.x/?ll={",".join(self.coords)}&z={self.scale}&l=sat')
+            f'https://static-maps.yandex.ru/1.x/?ll={self.coords[0]},{self.coords[1]}&z={self.scale}&l=sat')
 
         with open('res.jpg', mode='wb') as f:
             f.write(response.content)
@@ -39,12 +39,20 @@ class Example(QWidget):
 
     def keyReleaseEvent(self, e):
         if e.key() == Qt.Key_PageUp:
-            if self.scale < 13:
+            if self.scale < 14:
                 self.scale += 1
         if e.key() == Qt.Key_PageDown:
             if self.scale > 1:
                 self.scale -= 1
-        pass
+        if e.key() == Qt.Key_Up:
+            self.coords[1] += 0.2*(15-self.scale) / self.scale
+        if e.key() == Qt.Key_Down:
+            self.coords[1] -= 0.2*(15-self.scale) / self.scale
+        if e.key() == Qt.Key_Left:
+            self.coords[0] -= 0.2*(15-self.scale) / self.scale
+        if e.key() == Qt.Key_Right:
+            self.coords[0] += 0.2*(15-self.scale) / self.scale
+
         self.show_img()
 
 
