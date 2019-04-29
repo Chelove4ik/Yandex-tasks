@@ -49,7 +49,16 @@ class Example(QWidget):
         self.btn.move(750, 510)
         self.btn.clicked.connect(lambda: self.show_img(True))
 
+        self.btn_clear = QPushButton('Delete point', self)
+        self.btn_clear.resize(self.btn.sizeHint())
+        self.btn_clear.move(666, 510)
+        self.btn_clear.clicked.connect(self.crear_point)
+
         self.move(100, 200)
+        self.show_img()
+
+    def crear_point(self):
+        self.point = '99999,99999,flag'
         self.show_img()
 
     def show_img(self, search=False):
