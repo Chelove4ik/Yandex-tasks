@@ -5,7 +5,7 @@ from requests import get
 bot = telebot.TeleBot("736529129:AAFfzgvqN5RwiLcRskGxb0agCul1I_7FehQ")
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(func=lambda m: True)
 def geocoder(message):
     geocoder_uri = "http://geocode-maps.yandex.ru/1.x/"
     response = get(geocoder_uri, params={
