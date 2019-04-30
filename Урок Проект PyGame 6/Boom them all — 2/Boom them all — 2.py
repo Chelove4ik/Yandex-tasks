@@ -20,8 +20,11 @@ class Bomb(pygame.sprite.Sprite):
         super().__init__(group)
         self.image = load_image('bomb.png')
         self.rect = self.image.get_rect()
-        self.rect.x = random.randint(0, width - self.rect.width)
-        self.rect.y = random.randint(0, height - self.rect.height)
+        while True:
+            self.rect.x = random.randint(0, width - self.rect.width)
+            self.rect.y = random.randint(0, height - self.rect.height)
+            if len(pygame.sprite.spritecollide(self, group, False)) == 1:
+                break
 
     def blow_up(self, pos):
         if self.rect.x <= pos[0] <= self.rect.x + self.rect.width and \
@@ -37,12 +40,12 @@ running = True
 fps = 60
 v = 100
 all_sprites = pygame.sprite.Group()
-for i in range(20):
+for i in range(10):
     Bomb(all_sprites)
 clock = pygame.time.Clock()
 
 while running:
-    screen.fill((0, 0, 0))
+    screen.fill(pygame.Color('black'))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
